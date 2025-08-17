@@ -5,7 +5,7 @@ import { StdioClientTransport } from '@modelcontextprotocol/sdk/client/stdio.js'
 import { StreamableHTTPClientTransport } from '@modelcontextprotocol/sdk/client/streamableHttp.js'
 import { SSEClientTransport } from '@modelcontextprotocol/sdk/client/sse.js'
 
-async function testStdioTransport() {
+export async function testStdioTransport() {
   console.log('start stdio client transport')
   const client = new Client({
     name: 'mcp-stdio-client',
@@ -47,7 +47,7 @@ async function testStdioTransport() {
   await sleep(1000)
 }
 
-async function testStreamableHttpTransport() {
+export async function testStreamableHttpTransport() {
   console.log('start streamable http client transport')
   const client = new Client({
     name: 'mcp-http-client',
@@ -84,7 +84,7 @@ async function testStreamableHttpTransport() {
   await sleep(1000)
 }
 
-async function testSSETransport() {
+export async function testSSETransport() {
   console.log('start sse client transport')
   const client = new Client({
     name: 'mcp-sse-client',
