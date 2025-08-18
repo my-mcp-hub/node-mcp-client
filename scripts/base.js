@@ -6,7 +6,13 @@ import { rimraf } from 'rimraf'
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const isProd = process.env.NODE_ENV === 'production'
 const isDev = process.env.NODE_ENV === 'local'
-let webProcess = null
+let nodeProcess = null
+
+if (isDev) {
+  spawn('npx', ['-y', '@my-mcp-hub/node-mcp-server', 'web'], {
+    stdio: 'inherit',
+  })
+}
 
 /** @type {import('esbuild').BuildOptions} */
 export const config = {
@@ -47,10 +53,10 @@ const after = async result => {
     } else {
       console.error('❌ Rebuild failed')
     }
-    if (webProcess) {
-      webProcess.kill('SIGINT')
+    if (nodeProcess) {
+      nodeProcess.kill('SIGINT')
     }
-    webProcess = spawn('npx', ['-y', '@my-mcp-hub/node-mcp-server', 'web'], {
+    nodeProcess = spawn('tsx', ['./src/index.ts'], {
       stdio: 'inherit',
     })
   }
