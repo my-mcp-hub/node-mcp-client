@@ -13,11 +13,6 @@ export default defineConfig({
       reporter: ['text', 'lcov', 'html'],
     },
     pool: 'threads',
-    poolOptions: {
-      threads: {
-        maxThreads: 1,
-        minThreads: 1,
-      },
-    },
+    maxWorkers: 1,
   },
 })
