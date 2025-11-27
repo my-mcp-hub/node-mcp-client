@@ -1,5 +1,5 @@
 import { describe, test } from 'vitest'
-import { testStdioTransport, testStreamableHttpTransport, testSSETransport } from '@/index'
+import { testSSETransport, testStdioTransport, testStreamableHttpTransport } from '@/index'
 
 describe('MCP client', () => {
   test('stdio transport', async () => {

@@ -1,9 +1,9 @@
 import 'dotenv/config'
-import { setTimeout as sleep } from 'timers/promises'
+import { setTimeout as sleep } from 'node:timers/promises'
 import { Client } from '@modelcontextprotocol/sdk/client/index.js'
+import { SSEClientTransport } from '@modelcontextprotocol/sdk/client/sse.js'
 import { StdioClientTransport } from '@modelcontextprotocol/sdk/client/stdio.js'
 import { StreamableHTTPClientTransport } from '@modelcontextprotocol/sdk/client/streamableHttp.js'
-import { SSEClientTransport } from '@modelcontextprotocol/sdk/client/sse.js'
 
 export async function testStdioTransport() {
   console.log('start stdio client transport')
