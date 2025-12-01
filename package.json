@@ -5,7 +5,11 @@
   "author": "zhensherlock",
   "type": "module",
   "license": "MIT",
-  "files": ["build", "LICENSE", "README.md"],
+  "files": [
+    "build",
+    "LICENSE",
+    "README.md"
+  ],
   "main": "build/index.js",
   "scripts": {
     "prepare": "husky",
@@ -39,9 +43,9 @@
     "globals": "^16.5.0",
     "husky": "^9.1.7",
     "lint-staged": "^16.2.7",
-    "prettier": "^3.6.2",
+    "prettier": "^3.7.3",
     "rimraf": "^6.1.2",
-    "tsx": "^4.20.6",
+    "tsx": "^4.21.0",
     "typescript": "^5.9.3",
     "vitest": "^4.0.14"
   },
