@@ -12,6 +12,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["src", "tests", "vitest.config.ts", "vitest.global.ts", "vitest.setup.ts"],
+  "include": ["src", "tests", "vitest.config.ts", "vitest.global.ts"],
   "exclude": ["node_modules"]
 }
