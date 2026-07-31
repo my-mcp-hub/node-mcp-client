@@ -1,8 +1,9 @@
-import { spawn } from 'node:child_process'
-import path from 'node:path'
+import { spawn } from 'child_process'
+import path from 'path'
 import { rimraf } from 'rimraf'
+import { fileURLToPath } from 'url'
 
-const dirname = import.meta.dirname
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const isProd = process.env.NODE_ENV === 'production'
 const isDev = process.env.NODE_ENV === 'local'
 let nodeProcess = null
@@ -15,16 +16,16 @@ if (isDev) {
 
 /** @type {import('esbuild').BuildOptions} */
 export const config = {
-  entryPoints: [path.resolve(dirname, '../src/index.ts')],
-  outfile: path.resolve(dirname, '../build/index.js'),
+  entryPoints: [path.resolve(__dirname, '../src/index.ts')],
+  outfile: path.resolve(__dirname, '../build/index.js'),
   format: 'esm',
   bundle: true,
   sourcemap: isDev,
   minify: isProd,
   platform: 'node',
-  external: ['dotenv', 'timers/promises', '@modelcontextprotocol/sdk'],
+  external: ['dotenv', '@modelcontextprotocol/client'],
   alias: {
-    '@': path.resolve(dirname, '../src'),
+    '@': path.resolve(__dirname, '../src'),
   },
   plugins: [
     {
