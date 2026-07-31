@@ -1,10 +1,10 @@
-import tsPlugin from '@typescript-eslint/eslint-plugin'
-import tsParser from '@typescript-eslint/parser'
 import importPlugin from 'eslint-plugin-import'
 import prettierPlugin from 'eslint-plugin-prettier'
 import globals from 'globals'
+import tseslint from 'typescript-eslint'
 
 export default [
+  ...tseslint.configs.recommended,
   {
     ignores: ['**/build', '**/node_modules', '**/.*', '**/*.d.ts', '.husky/'],
   },
@@ -13,7 +13,7 @@ export default [
   },
   {
     languageOptions: {
-      parser: tsParser,
+      parser: tseslint.parser,
       parserOptions: {
         ecmaVersion: 'latest',
         sourceType: 'module',
@@ -24,7 +24,7 @@ export default [
       },
     },
     plugins: {
-      '@typescript-eslint': tsPlugin,
+      '@typescript-eslint': tseslint.plugin,
       import: importPlugin,
       prettier: prettierPlugin,
     },
