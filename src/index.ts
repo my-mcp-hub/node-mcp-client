@@ -6,15 +6,31 @@ export { createClient } from './client'
 export { runKnowledgeBaseDemo } from './knowledgeBaseDemo'
 export { runStdioDemo, runStreamableHttpDemo } from './transports'
 
-async function main() {
-  try {
-    const stdioResult = await runStdioDemo()
-    console.log('stdio demo:', stdioResult.selectedDocument)
+interface DemoResult {
+  selectedDocument: unknown
+}
 
-    const httpResult = await runStreamableHttpDemo()
-    console.log('streamable HTTP demo:', httpResult.selectedDocument)
+export interface MainDependencies {
+  runStdioDemo: () => Promise<DemoResult>
+  runStreamableHttpDemo: () => Promise<DemoResult>
+  logger: Pick<Console, 'log' | 'error'>
+}
+
+const defaultDependencies: MainDependencies = {
+  runStdioDemo,
+  runStreamableHttpDemo,
+  logger: console,
+}
+
+export async function main(dependencies: MainDependencies = defaultDependencies) {
+  try {
+    const stdioResult = await dependencies.runStdioDemo()
+    dependencies.logger.log('stdio demo:', stdioResult.selectedDocument)
+
+    const httpResult = await dependencies.runStreamableHttpDemo()
+    dependencies.logger.log('streamable HTTP demo:', httpResult.selectedDocument)
   } catch (error) {
-    console.error('Main error:', error)
+    dependencies.logger.error('Main error:', error)
     process.exitCode = 1
   }
 }
