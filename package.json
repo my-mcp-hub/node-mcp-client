@@ -25,7 +25,7 @@
     "dotenv": "^17.4.2"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.5.5",
+    "@biomejs/biome": "2.5.12",
     "@commitlint/cli": "^21.2.1",
     "@commitlint/config-conventional": "^21.2.0",
     "@vitest/coverage-v8": "^4.1.10",
